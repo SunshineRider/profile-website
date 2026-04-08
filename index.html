@@ -440,35 +440,23 @@
       border-radius: 100px;
     }
 
+    .topic-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--tag-fg);
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
     .post-date {
       font-size: 0.78rem;
       color: var(--subtle);
     }
-
-    .writing-cta {
-      margin-top: 20px;
-      padding: 14px 16px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.82rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    /* ===== X / TWITTER EMBED ===== */
-    .x-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    @media (max-width: 580px) { .x-section { grid-template-columns: 1fr; } }
 
     .x-profile-card {
       background: var(--card-bg);
@@ -500,16 +488,6 @@
       font-size: 0.83rem;
       color: var(--muted);
       line-height: 1.5;
-    }
-
-    .x-feed-placeholder {
-      font-size: 0.8rem;
-      color: var(--muted);
-      border: 1px dashed var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-      line-height: 1.6;
     }
 
     /* ===== EXPERIENCE ===== */
@@ -745,9 +723,10 @@
 
     <!-- WRITING / X -->
     <section id="writing">
-      <div class="section-label">Writing & Threads</div>
-      <div class="x-section">
-        <!-- X Profile Card -->
+      <div class="section-label">Writing</div>
+
+      <!-- Social cards row -->
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
         <div class="x-profile-card">
           <div class="x-profile-top">
             <img class="x-avatar" src="rahul.png" alt="Rahul Mittal">
@@ -756,27 +735,47 @@
               <div class="x-at">@SunshineRider_</div>
             </div>
           </div>
-          <div class="x-bio">Writing about DeFi protocol mechanics, Solana ecosystem, on-chain AI, and MEV. Occasional deep-dives on AMM math and liquidation architecture.</div>
-          <a href="https://x.com/SunshineRider_" target="_blank" rel="noopener" class="btn btn-x" style="align-self: flex-start;">
+          <div class="x-bio">Threads on DeFi protocol mechanics, Solana, on-chain AI, AMM math, and MEV architecture.</div>
+          <a href="https://x.com/SunshineRider_" target="_blank" rel="noopener" class="btn btn-x" style="align-self: flex-start; margin-top: 4px;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             Follow on X
           </a>
         </div>
 
-        <!-- Post List -->
-        <div>
-          <div class="post-list" id="post-list">
-            <!-- populated by JS from posts.json -->
-          </div>
-          <div class="writing-cta">
-            <span>More articles, threads & notes on X and LinkedIn</span>
-            <div style="display:flex;gap:8px;">
-              <a href="https://x.com/SunshineRider_" target="_blank" class="btn btn-x" style="padding: 5px 10px; font-size: 0.75rem;">X / Twitter</a>
-              <a href="https://linkedin.com/in/rahul-mittal4233" target="_blank" class="btn btn-linkedin" style="padding: 5px 10px; font-size: 0.75rem;">LinkedIn</a>
+        <div class="x-profile-card">
+          <div class="x-profile-top">
+            <img class="x-avatar" src="rahul.png" alt="Rahul Mittal">
+            <div>
+              <div class="x-handle">Rahul Mittal</div>
+              <div class="x-at">linkedin.com/in/rahul-mittal4233</div>
             </div>
           </div>
+          <div class="x-bio">Long-form articles on protocol design, DeFi architecture, and lessons from building at scale.</div>
+          <a href="https://linkedin.com/in/rahul-mittal4233" target="_blank" rel="noopener" class="btn btn-linkedin" style="align-self: flex-start; margin-top: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            Connect on LinkedIn
+          </a>
         </div>
       </div>
+
+      <!-- Topics I write about -->
+      <div style="margin-bottom: 16px;">
+        <div style="font-size:0.78rem; color: var(--subtle); margin-bottom: 10px;">Topics</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span class="topic-chip">AMM invariants & math</span>
+          <span class="topic-chip">Liquidation architecture</span>
+          <span class="topic-chip">Solana / Anchor programs</span>
+          <span class="topic-chip">MEV & mempool</span>
+          <span class="topic-chip">Liquid staking mechanics</span>
+          <span class="topic-chip">On-chain AI & NFT evolution</span>
+          <span class="topic-chip">Decentralized compute</span>
+          <span class="topic-chip">DeFi protocol design</span>
+        </div>
+      </div>
+
+      <!-- Articles — populated from posts.json -->
+      <div class="post-list" id="post-list"></div>
+
     </section>
 
     <!-- EXPERIENCE -->
@@ -899,15 +898,12 @@
   </div><!-- /container -->
 
   <script>
-    // Load posts from posts.json
+    // Load posts from posts.json — add entries there to populate this section
     fetch('posts.json')
       .then(r => r.json())
       .then(posts => {
+        if (!posts.length) return;
         const list = document.getElementById('post-list');
-        if (!posts.length) {
-          list.innerHTML = '<p style="font-size:0.82rem;color:var(--muted);padding:12px 0;">Articles and threads coming soon.</p>';
-          return;
-        }
         list.innerHTML = posts.map(p => `
           <a class="post-item" href="${p.url}" target="_blank" rel="noopener">
             <div class="post-info">
@@ -921,10 +917,7 @@
           </a>
         `).join('');
       })
-      .catch(() => {
-        const list = document.getElementById('post-list');
-        list.innerHTML = '<p style="font-size:0.82rem;color:var(--muted);padding:12px 0;">Articles and threads coming soon.</p>';
-      });
+      .catch(() => {});
   </script>
 
 </body>
